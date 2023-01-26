@@ -6,7 +6,7 @@ import { Container } from '../styles'
 const columns = [
   {
     id: 'name',
-    label: 'Name',
+    label: 'Nombre',
   },
   {
     id: 'surnames',
