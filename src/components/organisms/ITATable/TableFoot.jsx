@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { showOptions } from '../../../constants'
@@ -31,6 +32,11 @@ const StyledIcon = styled(Icon)`
 
 function TableFoot() {
   const dispatch = useDispatch()
+  const [value, setValue] = useState(10)
+
+  useEffect(() => {
+    dispatch(getHouses({ limit: value }))
+  }, [value, dispatch])
 
   return (
     <tfoot>
@@ -50,7 +56,7 @@ function TableFoot() {
             label="Mostrar"
             defaultValue="10"
             options={showOptions.map((opt) => ({ value: opt, text: opt }))}
-            onChange={(e) => dispatch(getHouses(e.target.value))}
+            onChange={(e) => setValue(e.target.value)}
             weight="bold"
           />
         </StyledTableCell>

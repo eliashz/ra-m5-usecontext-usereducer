@@ -7,7 +7,7 @@ function TableBody() {
   const { data, columns } = state
   return (
     <tbody>
-      {data.map((d) => (
+      {Object.values(data).map((d) => (
         <tr key={d.id}>
           {columns
             .filter((col) => !col.isHidden)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Body } from '../components/layout'
 import { ITATable } from '../components/organisms'
 import { Container } from '../styles'
@@ -49,10 +50,13 @@ const data = [
 ]
 
 function Data() {
+  const byId = useSelector((state) => state.houses.houses.byId)
+  console.log(byId)
+
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
-        <ITATable columns={columns} data={data} />
+        <ITATable columns={columns} data={byId} />
       </Container>
     </Body>
   )
