@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { urls } from '../constants'
 
-const getUrl = (page, limit) => {
-  return `${urls.houses}?_page=${page}&_limit=${limit}`
-}
+const getUrl = (page, limit) => `${urls.houses}?_page=${page}&_limit=${limit}`
 
 export const getHouses = createAsyncThunk('houses/getHouses', async (info) => {
   const res = await fetch(getUrl(info?.currentPage, info?.limit))
