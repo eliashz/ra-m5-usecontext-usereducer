@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { SelectGroup } from '../../molecules'
 import { showOptions } from '../../../constants'
 import { getHouses } from '../../../store/houses.slice'
 import { colors, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
-import { SelectGroup } from '../../molecules'
 import { TableCell } from './styles'
 
 const StyledTableCell = styled(TableCell).attrs({ colSpan: 3 })``
