@@ -5,7 +5,7 @@ import { colors, dimensions } from '../../styles'
 const { spacing, borderRadius } = dimensions
 
 const ButtonStyled = styled.button`
-  background-color: ${colors.purple};
+  background-color: ${({background-color})} => ${colors.purple} || ${background-color}};
   color: white;
   border-radius: ${borderRadius.base};
   border: 0;
@@ -18,6 +18,7 @@ const ButtonStyled = styled.button`
 `
 
 function Button({ children, type = 'button', ...rest }) {
+  console.log(rest)
   return (
     <ButtonStyled type={type} {...rest}>
       {children}

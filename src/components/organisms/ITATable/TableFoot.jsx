@@ -45,12 +45,13 @@ function TableFoot() {
         <StyledTableCell border="none">
           <FlexBox direction="row" align="center">
             <StyledIcon
+              disabled={currentPage === 1 ? 'true' : 'false'}
               icon="arrow_back_ios"
               wght="800"
               onClick={() => setCurrentPage(currentPage - 1)}
             />
             <Text as="b" fontSize=".7em">
-              Página 1 de 50
+              Página {currentPage} de 50
             </Text>
 
             <StyledIcon
