@@ -1,10 +1,23 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { showOptions } from '../../../constants'
+import { getHouses } from '../../../store/houses.slice'
 import { colors, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
 import { SelectGroup } from '../../molecules'
 import { TableCell } from './styles'
+
+const StyledTableCell = styled(TableCell).attrs({ colSpan: 3 })``
+
+const StyledSelectGroup = styled(SelectGroup)`
+  &:first-of-type {
+    padding: 0.01rem 0.4rem;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+    font-size: 0.7em;
+  }
+`
 
 const StyledIcon = styled(Icon)`
   color: ${colors.purple};
@@ -16,9 +29,9 @@ const StyledIcon = styled(Icon)`
   }
 `
 
-const StyledTableCell = styled(TableCell).attrs({ colSpan: 2 })``
-
 function TableFoot() {
+  const dispatch = useDispatch()
+
   return (
     <tfoot>
       <tr>
@@ -32,10 +45,13 @@ function TableFoot() {
           </FlexBox>
         </StyledTableCell>
         <StyledTableCell border="none" align="right">
-          <SelectGroup
+          <StyledSelectGroup
             id="mostrar"
             label="Mostrar"
+            defaultValue="10"
             options={showOptions.map((opt) => ({ value: opt, text: opt }))}
+            onChange={(e) => dispatch(getHouses(e.target.value))}
+            weight="bold"
           />
         </StyledTableCell>
       </tr>

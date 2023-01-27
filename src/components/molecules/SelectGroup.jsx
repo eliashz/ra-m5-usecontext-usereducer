@@ -16,7 +16,7 @@ function SelectGroup({
 }) {
   return (
     <SelectGroupStyled>
-      <Label htmlFor={id} hideLabel={hideLabel}>
+      <Label htmlFor={id} hideLabel={hideLabel} weight={rest.weight}>
         {label}
       </Label>
       <Select

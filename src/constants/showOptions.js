@@ -1,1 +1,1 @@
-export default ['10', '25', '50']
+export default ['10', '20', '50']

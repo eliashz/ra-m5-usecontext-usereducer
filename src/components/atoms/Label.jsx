@@ -5,6 +5,7 @@ import Text from './Text'
 
 const LabelStyled = styled(Text)`
   display: ${({ hideLabel }) => (hideLabel ? 'none' : 'inline')};
+  font-weight: ${({ weight }) => weight || 'normal'};
 
   &.hide-element {
     border: 0;
@@ -24,6 +25,7 @@ function Label({
   color = colors.font.base,
   size = dimensions.font.base,
   hideLabel,
+  weight,
 }) {
   return (
     <LabelStyled
@@ -31,6 +33,7 @@ function Label({
       htmlFor={htmlFor}
       color={color}
       size={size}
+      weight={weight}
       className={hideLabel ? 'hide-element' : ''}
     >
       {children}
@@ -44,6 +47,7 @@ Label.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   hideLabel: PropTypes.bool,
+  weight: PropTypes.string,
 }
 
 export default styled(Label)``

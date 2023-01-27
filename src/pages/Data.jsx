@@ -2,44 +2,49 @@ import React from 'react'
 import { Body } from '../components/layout'
 import { ITATable } from '../components/organisms'
 import { Container } from '../styles'
-import BottomCell from '../components/organisms/ITATable/TableFoot'
 
 const columns = [
   {
-    id: 'name',
-    label: 'Nombre',
+    id: 'title',
+    label: 'Título',
   },
   {
-    id: 'surnames',
-    label: 'Apellidos',
+    id: 'price',
+    label: 'Precio',
   },
   {
-    id: 'age',
-    label: 'Edad',
+    id: 'type',
+    label: 'Tipo',
     cell: (row) => (
-      <span style={{ color: row.age > 50 ? 'green' : 'red' }}>{row.age}</span>
+      <span style={{ color: row.type > 50 ? 'green' : 'red' }}>{row.type}</span>
     ),
   },
   {
-    id: 'occupation',
-    label: 'Ocupacion',
+    id: 'city',
+    label: 'Ciudad',
+  },
+  {
+    id: 'district',
+    label: 'Distrito',
   },
 ]
 
 const data = [
   {
     id: 1,
-    name: 'Juan',
-    surnames: 'Perez',
-    age: 25,
-    occupation: 'Developer',
+    title: 'Duplex',
+    price: '200.000€',
+    type: 'casa',
+    city: 'Madrid',
+    district: 'Lavapiés',
   },
   {
     id: 2,
-    name: 'Pedro',
-    surnames: 'Gomez',
-    age: 75,
-    occupation: 'Developer',
+    title: 'Garaje grande',
+    price: '450.000€',
+    type: 'garaje',
+    city: 'Barcelona',
+    district: 'Sant Andreu',
   },
 ]
 
