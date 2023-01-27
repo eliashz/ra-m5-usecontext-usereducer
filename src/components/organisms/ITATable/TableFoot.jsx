@@ -32,22 +32,32 @@ const StyledIcon = styled(Icon)`
 
 function TableFoot() {
   const dispatch = useDispatch()
-  const [value, setValue] = useState(10)
+  const [showValue, setShowValue] = useState(showOptions[0])
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    dispatch(getHouses({ limit: value }))
-  }, [value, dispatch])
+    dispatch(getHouses({ currentPage, limit: showValue }))
+  }, [currentPage, showValue, dispatch])
 
   return (
     <tfoot>
       <tr>
         <StyledTableCell border="none">
           <FlexBox direction="row" align="center">
-            <StyledIcon icon="arrow_back_ios" wght="800" />
+            <StyledIcon
+              icon="arrow_back_ios"
+              wght="800"
+              onClick={() => setCurrentPage(currentPage - 1)}
+            />
             <Text as="b" fontSize=".7em">
               Página 1 de 50
             </Text>
-            <StyledIcon icon="arrow_forward_ios" wght="800" />
+
+            <StyledIcon
+              icon="arrow_forward_ios"
+              wght="800"
+              onClick={() => setCurrentPage(currentPage + 1)}
+            />
           </FlexBox>
         </StyledTableCell>
         <StyledTableCell border="none" align="right">
@@ -56,7 +66,7 @@ function TableFoot() {
             label="Mostrar"
             defaultValue="10"
             options={showOptions.map((opt) => ({ value: opt, text: opt }))}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setShowValue(e.target.value)}
             weight="bold"
           />
         </StyledTableCell>

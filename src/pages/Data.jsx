@@ -16,9 +16,9 @@ const columns = [
   {
     id: 'type',
     label: 'Tipo',
-    cell: (row) => (
+    /*     cell: (row) => (
       <span style={{ color: row.type > 50 ? 'green' : 'red' }}>{row.type}</span>
-    ),
+    ), */
   },
   {
     id: 'city',
@@ -32,6 +32,8 @@ const columns = [
 
 function Data() {
   const byId = useSelector((state) => state.houses.houses.byId)
+  const h = useSelector((state) => state.houses)
+  console.log(h)
 
   return (
     <Body>
