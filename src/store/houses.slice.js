@@ -2,12 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { urls } from '../constants'
 
 const getUrl = (page = 1, limit = 9) => {
-  console.log('page, limi', page, limit)
   return `${urls.houses}?_page=${page}&_limit=${limit}`
 }
 
 export const getHouses = createAsyncThunk('houses/getHouses', async (info) => {
-  console.log(info)
   const res = await fetch(getUrl(info?.currentPage, info?.limit))
   const data = await res.json()
   return data

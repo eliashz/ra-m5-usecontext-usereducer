@@ -30,28 +30,8 @@ const columns = [
   },
 ]
 
-const data = [
-  {
-    id: 1,
-    title: 'Duplex',
-    price: '200.000€',
-    type: 'casa',
-    city: 'Madrid',
-    district: 'Lavapiés',
-  },
-  {
-    id: 2,
-    title: 'Garaje grande',
-    price: '450.000€',
-    type: 'garaje',
-    city: 'Barcelona',
-    district: 'Sant Andreu',
-  },
-]
-
 function Data() {
   const byId = useSelector((state) => state.houses.houses.byId)
-  console.log(byId)
 
   return (
     <Body>
