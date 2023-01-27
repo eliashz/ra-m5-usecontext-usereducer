@@ -3,10 +3,8 @@ import TableProvider, { TableContext } from './store/context'
 import { Actions } from './store/reducer'
 import { TableStyled } from './styles'
 import TableBody from './TableBody'
+import TableFoot from './TableFoot'
 import TableHeader from './TableHeader'
-
-
-
 
 function Table({ columns, data, showHeader = true }) {
   const { dispatch } = useContext(TableContext)
@@ -20,6 +18,7 @@ function Table({ columns, data, showHeader = true }) {
     <TableStyled>
       {showHeader && <TableHeader />}
       <TableBody />
+      <TableFoot />
     </TableStyled>
   )
 }

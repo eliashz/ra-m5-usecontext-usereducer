@@ -2,7 +2,7 @@ import React from 'react'
 import { Body } from '../components/layout'
 import { ITATable } from '../components/organisms'
 import { Container } from '../styles'
-import BottomCell from '../components/organisms/ITATable/BottomCell'
+import BottomCell from '../components/organisms/ITATable/TableFoot'
 
 const columns = [
   {
@@ -48,7 +48,6 @@ function Data() {
     <Body>
       <Container style={{ marginTop: '2rem' }}>
         <ITATable columns={columns} data={data} />
-        <BottomCell />
       </Container>
     </Body>
   )
