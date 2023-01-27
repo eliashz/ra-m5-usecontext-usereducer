@@ -1,21 +1,12 @@
 import { useEffect, useContext } from 'react'
 import { useSelector } from 'react-redux'
-import styled from 'styled-components'
-import { colors, FlexBox } from '../../../styles'
-import { Button } from '../../atoms'
+import { Buttons } from '../../molecules'
 import TableProvider, { TableContext } from './store/context'
 import { Actions } from './store/reducer'
 import { TableStyled } from './styles'
 import TableBody from './TableBody'
 import TableFoot from './TableFoot'
 import TableHeader from './TableHeader'
-
-const StyledButton = styled(Button)`
-  font-size: 0.7em;
-  font-weight: 200;
-  margin-bottom: 2em;
-  margin-left: 1em;
-`
 
 function Table({ columns, data, showHeader = true }) {
   const { dispatch } = useContext(TableContext)
@@ -29,11 +20,7 @@ function Table({ columns, data, showHeader = true }) {
     <>
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
-      <FlexBox direction="row" justify="flex-end">
-        <StyledButton background-color={colors.blue}>Viviendas</StyledButton>
-        <StyledButton padding="1em 2em">Por barrio</StyledButton>
-        <StyledButton padding="1em 2em">Descargar</StyledButton>
-      </FlexBox>
+      <Buttons />
       <TableStyled>
         {showHeader && <TableHeader />}
         <TableBody />

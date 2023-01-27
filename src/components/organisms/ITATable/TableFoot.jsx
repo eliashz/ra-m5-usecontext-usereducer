@@ -45,7 +45,6 @@ function TableFoot() {
         <StyledTableCell border="none">
           <FlexBox direction="row" align="center">
             <StyledIcon
-              disabled={currentPage === 1 ? 'true' : 'false'}
               icon="arrow_back_ios"
               wght="800"
               onClick={() => setCurrentPage(currentPage - 1)}

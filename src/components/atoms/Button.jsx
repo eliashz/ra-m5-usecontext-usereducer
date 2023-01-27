@@ -5,20 +5,19 @@ import { colors, dimensions } from '../../styles'
 const { spacing, borderRadius } = dimensions
 
 const ButtonStyled = styled.button`
-  background-color: ${({background-color})} => ${colors.purple} || ${background-color}};
-  color: white;
-  border-radius: ${borderRadius.base};
-  border: 0;
+  background-color: ${({ background }) => background || colors.purple};
+  color: ${({ color }) => color || colors.white};
+  border-radius: ${({ radius }) => radius || borderRadius.base};
+  border: ${({ border }) => border || 0};
   padding: ${spacing.xs} ${spacing.base};
-  box-shadow: ${colors.shadow.base};
+  box-shadow: ${({ boxShadow }) => boxShadow || colors.shadow.base};
 
   &:hover {
-    cursor: pointer;
+    cursor: ${({ cursor }) => cursor || 'pointer'};
   }
 `
 
 function Button({ children, type = 'button', ...rest }) {
-  console.log(rest)
   return (
     <ButtonStyled type={type} {...rest}>
       {children}

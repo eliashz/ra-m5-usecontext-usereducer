@@ -6,14 +6,10 @@ import { columns } from '../constants'
 import { Container } from '../styles'
 
 function Data() {
-  const { reqStatus, houses } = useSelector((state) => state.houses)
-  const { isError, isSuccess, isLoading } = reqStatus
-  const { byId } = houses
-  console.log(reqStatus)
-  console.log(byId)
+  const byId = useSelector((state) => state.houses.houses.byId)
+
   return (
     <Body>
-
       <Container style={{ marginTop: '2rem' }}>
         <ITATable columns={columns} data={byId} />
       </Container>
