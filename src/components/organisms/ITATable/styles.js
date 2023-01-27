@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const TableCell = styled.td`
-  border: 1px solid;
+  border: ${({ border }) => border || '1px solid'};
+  text-align: ${({ align }) => align || 'left'};
   padding: 0.5rem;
 `
 
