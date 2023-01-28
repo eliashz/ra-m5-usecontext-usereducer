@@ -39,6 +39,7 @@ function TableFoot() {
   }, [currentPage, showValue, dispatch])
 
   return (
+    // Conviertelo en un div, porque no admite el footer no admite divs dentro
     <tfoot>
       <tr>
         <StyledTableCell border="none">

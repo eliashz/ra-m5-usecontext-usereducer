@@ -10,6 +10,7 @@ import TableHeader from './TableHeader'
 
 function Table({ columns, data, showHeader = true }) {
   const { dispatch } = useContext(TableContext)
+  //   Use selector fuera de aquí, pasale el isLoading al componente desde fuera
   const { isError, isLoading } = useSelector((state) => state.houses.reqStatus)
   useEffect(() => {
     dispatch({ type: Actions.SET_DATA, payload: data })
@@ -18,6 +19,7 @@ function Table({ columns, data, showHeader = true }) {
 
   return (
     <>
+      {/* En lugar de tener un Loading..., pon una tabla vacia sin datos, con 4 y 3 columnas (por ejemplo) y que dentro tengan un Shimmer de cargando */}
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
       <Buttons />
