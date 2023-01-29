@@ -23,10 +23,9 @@ function Data() {
     },
   ]
   const data = Object.values(byId).splice(
-    Number(selectedPage) * Number(selectedShow) - 1,
+    (0 + Number(selectedPage) - 1) * Number(selectedShow),
     Number(selectedShow),
   )
-  console.log(data, selectedShow, selectedPage)
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>

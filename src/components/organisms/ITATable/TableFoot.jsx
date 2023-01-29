@@ -62,8 +62,7 @@ function TableFoot() {
               pointer={selectedPage === 1 && 'none'}
             />
             <Text as="b" fontSize=".7em">
-              Página {selectedPage} de{' '}
-              {Math.round(allIds.length / selectedShow)}
+              Página {selectedPage} de {Math.ceil(allIds.length / selectedShow)}
             </Text>
 
             <StyledIcon
@@ -71,7 +70,7 @@ function TableFoot() {
               wght="800"
               onClick={() => dispatch(setSelectedPageInc())}
               pointer={
-                selectedPage === Math.round(allIds.length / selectedShow) &&
+                selectedPage === Math.ceil(allIds.length / selectedShow) &&
                 'none'
               }
             />
