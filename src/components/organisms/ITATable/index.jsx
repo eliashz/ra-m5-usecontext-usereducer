@@ -18,11 +18,11 @@ function Table({ columns, data, showHeader = true, isLoading }) {
 
   return (
     <>
-      <Buttons />
+      {!isLoading && <Buttons />}
       <TableStyled>
         {showHeader && <TableHeader />}
         <TableBody />
-        <TableFoot />
+        {!isLoading && <TableFoot />}
       </TableStyled>
     </>
   )
