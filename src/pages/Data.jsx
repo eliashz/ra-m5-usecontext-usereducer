@@ -7,11 +7,12 @@ import { Container } from '../styles'
 
 function Data() {
   const byId = useSelector((state) => state.houses.houses.byId)
+  const { isLoading } = useSelector((state) => state.houses.reqStatus)
 
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
-        <ITATable columns={columns} data={byId} />
+        <ITATable columns={columns} data={byId} isLoading={isLoading} />
       </Container>
     </Body>
   )

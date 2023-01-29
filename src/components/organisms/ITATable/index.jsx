@@ -8,9 +8,9 @@ import TableBody from './TableBody'
 import TableFoot from './TableFoot'
 import TableHeader from './TableHeader'
 
-function Table({ columns, data, showHeader = true }) {
+function Table({ columns, data, showHeader = true, isLoading }) {
   const { dispatch } = useContext(TableContext)
-  const { isError, isLoading } = useSelector((state) => state.houses.reqStatus)
+
   useEffect(() => {
     dispatch({ type: Actions.SET_DATA, payload: data })
     dispatch({ type: Actions.SET_COLUMNS, payload: columns })
@@ -19,7 +19,6 @@ function Table({ columns, data, showHeader = true }) {
   return (
     <>
       {isLoading && <div>Loading...</div>}
-      {isError && <div>Error</div>}
       <Buttons />
       <TableStyled>
         {showHeader && <TableHeader />}

@@ -56,6 +56,7 @@ const housesSlice = createSlice({
       state.reqStatus.isSuccess = true
       state.reqStatus.isLoading = false
       state.reqStatus.isError = false
+      console.log('slice', action.payload, action.payload.length)
       if (action.payload && action.payload.length === 0) {
         state.reqStatus.hasData = false
       }
