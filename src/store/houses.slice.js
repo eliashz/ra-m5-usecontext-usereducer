@@ -29,7 +29,10 @@ const initialState = {
     selectedType: null,
     types: [],
     cities: [],
-    filterData: [],
+  },
+  filter: {
+    data: [],
+    showOption: 10,
   },
 }
 
@@ -42,6 +45,9 @@ const housesSlice = createSlice({
     },
     setSelectedType(state, action) {
       state.houses.selectedType = action.payload
+    },
+    setFilterData(state, action) {
+      state.filter.data = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -81,5 +87,6 @@ const housesSlice = createSlice({
   },
 })
 
-export const { setSelectedCity, setSelectedType } = housesSlice.actions
+export const { setSelectedCity, setSelectedType, setFilterData } =
+  housesSlice.actions
 export default housesSlice.reducer

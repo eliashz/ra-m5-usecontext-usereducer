@@ -33,11 +33,10 @@ function TableFoot() {
   const dispatch = useDispatch()
   const [showValue, setShowValue] = useState(showOptions[0])
   const [currentPage, setCurrentPage] = useState(1)
-  console.log(currentPage)
 
   useEffect(() => {
-    dispatch(getHouses({ currentPage, limit: showValue }))
-  }, [currentPage, showValue, dispatch])
+    dispatch(getHouses(currentPage))
+  }, [currentPage, dispatch])
 
   return (
     <tfoot>
