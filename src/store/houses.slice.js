@@ -62,6 +62,9 @@ const housesSlice = createSlice({
     setSelectedPageDec(state) {
       state.houses.selectedPage -= 1
     },
+    setSelectedPageInitial(state) {
+      state.houses.selectedPage = 1
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getHouses.pending, (state) => {
@@ -106,5 +109,6 @@ export const {
   setSelectedShow,
   setSelectedPageInc,
   setSelectedPageDec,
+  setSelectedPageInitial,
 } = housesSlice.actions
 export default housesSlice.reducer

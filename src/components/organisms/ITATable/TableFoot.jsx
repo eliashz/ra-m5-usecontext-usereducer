@@ -7,6 +7,7 @@ import {
   getAllHouses,
   setSelectedPageDec,
   setSelectedPageInc,
+  setSelectedPageInitial,
   setSelectedShow,
 } from '../../../store/houses.slice'
 import { colors, FlexBox } from '../../../styles'
@@ -44,6 +45,11 @@ function TableFoot() {
     dispatch(getAllHouses())
   }, [dispatch])
 
+  function handleShowChange(e) {
+    dispatch(setSelectedShow(e.target.value))
+    dispatch(setSelectedPageInitial())
+  }
+
   return (
     <tfoot>
       <tr>
@@ -77,7 +83,7 @@ function TableFoot() {
             label="Mostrar"
             defaultValue="10"
             options={showOptions.map((opt) => ({ value: opt, text: opt }))}
-            onChange={(e) => dispatch(setSelectedShow(e.target.value))}
+            onChange={(e) => handleShowChange(e)}
             weight="bold"
           />
         </StyledTableCell>
