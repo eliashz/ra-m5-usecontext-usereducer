@@ -10,18 +10,23 @@ function Data() {
     (state) => state.houses.houses,
   )
   //const { isLoading } = useSelector((state) => state.houses.reqStatus)
-  const isLoading = false
-
-  //console.log('is', isLoading)
+  const isLoading = true
 
   const loading = [
     {
-      type: <img src={img.loading} alt="loading" height="30px" />,
+      id: 1,
+      label: <img src={img.loading} alt="loading" height="30px" />,
     },
     {
-      type: <img src={img.loading} alt="loading" height="30px" />,
+      id: 2,
+      label: <img src={img.loading} alt="loading" height="30px" />,
+    },
+    {
+      id: 3,
+      label: <img src={img.loading} alt="loading" height="30px" />,
     },
   ]
+
   const data = Object.values(byId).splice(
     (0 + Number(selectedPage) - 1) * Number(selectedShow),
     Number(selectedShow),
@@ -30,8 +35,8 @@ function Data() {
     <Body>
       <Container style={{ marginTop: '2rem' }}>
         <ITATable
-          columns={isLoading ? [{ id: 'type', label: 'Cargando...' }] : columns}
-          data={isLoading ? loading : data}
+          columns={isLoading ? loading : columns}
+          data={!isLoading && data}
           isLoading={isLoading}
         />
       </Container>
