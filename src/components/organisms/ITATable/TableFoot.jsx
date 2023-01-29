@@ -22,7 +22,7 @@ const StyledSelectGroup = styled(SelectGroup)`
 const StyledIcon = styled(Icon)`
   color: ${colors.purple};
   font-size: 1.5em;
-
+  pointer-events: ${({ pointer }) => pointer || 'auto'};
   &:hover {
     cursor: pointer;
     color: ${colors.blue};
@@ -33,13 +33,14 @@ function TableFoot() {
   const dispatch = useDispatch()
   const [showValue, setShowValue] = useState(showOptions[0])
   const [currentPage, setCurrentPage] = useState(1)
+  console.log(currentPage)
 
   useEffect(() => {
     dispatch(getHouses({ currentPage, limit: showValue }))
   }, [currentPage, showValue, dispatch])
 
   return (
-    <div>
+    <tfoot>
       <tr>
         <StyledTableCell border="none">
           <FlexBox direction="row" align="center">
@@ -47,6 +48,7 @@ function TableFoot() {
               icon="arrow_back_ios"
               wght="800"
               onClick={() => setCurrentPage(currentPage - 1)}
+              pointer={currentPage === 1 && 'none'}
             />
             <Text as="b" fontSize=".7em">
               Página {currentPage} de 50
@@ -56,6 +58,7 @@ function TableFoot() {
               icon="arrow_forward_ios"
               wght="800"
               onClick={() => setCurrentPage(currentPage + 1)}
+              pointer={currentPage === 5 && 'none'}
             />
           </FlexBox>
         </StyledTableCell>
@@ -70,7 +73,7 @@ function TableFoot() {
           />
         </StyledTableCell>
       </tr>
-    </div>
+    </tfoot>
   )
 }
 
