@@ -2,6 +2,7 @@ import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
 export default (columns, data) => {
+  // eslint-disable-next-line new-cap
   const doc = new jsPDF()
 
   autoTable(doc, {
