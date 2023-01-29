@@ -32,7 +32,8 @@ const initialState = {
   },
   filter: {
     data: [],
-    showOption: 10,
+    selectedShow: 10,
+    selectedPage: 1,
   },
 }
 

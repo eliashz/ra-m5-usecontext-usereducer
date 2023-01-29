@@ -18,7 +18,6 @@ function Table({ columns, data, showHeader = true, isLoading }) {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
       <Buttons />
       <TableStyled>
         {showHeader && <TableHeader />}

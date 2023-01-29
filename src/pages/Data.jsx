@@ -6,7 +6,7 @@ import { columns } from '../constants'
 import { Container } from '../styles'
 
 function Data() {
-  const byId = useSelector((state) => state.houses.houses.byId)
+  const { byId, allIds } = useSelector((state) => state.houses.houses)
   const { isLoading } = useSelector((state) => state.houses.reqStatus)
 
   return (

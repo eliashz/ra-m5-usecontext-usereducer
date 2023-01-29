@@ -20,6 +20,9 @@ function Houses() {
     dispatch(getHouses(currentPage))
   }, [currentPage, dispatch])
 
+  function filter(id) {
+    console.log(id)
+  }
   return (
     <HousesStyled>
       {isLoading && <div>Loading...</div>}
