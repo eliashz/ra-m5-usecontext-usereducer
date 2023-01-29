@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { colors, FlexBox } from '../../styles'
 import { Button, Icon } from '../atoms'
+import { downloadTable } from '../organisms/helpers'
 
 const StyledButton = styled(Button)`
   font-size: 0.7em;
@@ -15,7 +16,7 @@ const StyledIcon = styled(Icon)`
   padding-right: 2px;
 `
 
-function Buttons() {
+function Buttons({columns, data}) {
   return (
     <FlexBox direction="row" justify="flex-end">
       <StyledButton
@@ -34,7 +35,7 @@ function Buttons() {
       >
         Por barrio
       </StyledButton>
-      <StyledButton background={colors.green} boxShadow="none">
+      <StyledButton background={colors.green} boxShadow="none" onClick={() => downloadTable(columns, data)}>
         <StyledIcon icon="download" />
         Descargar
       </StyledButton>

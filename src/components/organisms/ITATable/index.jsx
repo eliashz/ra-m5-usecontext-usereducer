@@ -1,5 +1,4 @@
 import { useEffect, useContext } from 'react'
-import { useSelector } from 'react-redux'
 import { Buttons } from '../../molecules'
 import TableProvider, { TableContext } from './store/context'
 import { Actions } from './store/reducer'
@@ -18,7 +17,7 @@ function Table({ columns, data, showHeader = true, isLoading }) {
 
   return (
     <>
-      {!isLoading && <Buttons />}
+      {!isLoading && <Buttons columns={columns} data={data}/>}
       <TableStyled>
         {showHeader && <TableHeader />}
         <TableBody />

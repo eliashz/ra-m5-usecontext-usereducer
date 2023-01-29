@@ -10,7 +10,7 @@ function Data() {
     (state) => state.houses.houses,
   )
   //const { isLoading } = useSelector((state) => state.houses.reqStatus)
-  const isLoading = true
+  const isLoading = false
 
   const loading = [
     {
