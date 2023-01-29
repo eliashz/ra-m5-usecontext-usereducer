@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { urls } from '../constants'
+import { showOptions, urls } from '../constants'
 
 const getUrl = (page) => {
   return `${urls.houses}?_page=${page}&_limit=9`
@@ -38,6 +38,8 @@ const initialState = {
     selectedType: null,
     types: [],
     cities: [],
+    selectedShow: showOptions[0],
+    selectedPage: 1,
   },
 }
 
@@ -50,6 +52,15 @@ const housesSlice = createSlice({
     },
     setSelectedType(state, action) {
       state.houses.selectedType = action.payload
+    },
+    setSelectedShow(state, action) {
+      state.houses.selectedShow = action.payload
+    },
+    setSelectedPageInc(state) {
+      state.houses.selectedPage += 1
+    },
+    setSelectedPageDec(state) {
+      state.houses.selectedPage -= 1
     },
   },
   extraReducers: (builder) => {
@@ -89,6 +100,11 @@ const housesSlice = createSlice({
   },
 })
 
-export const { setSelectedCity, setSelectedType, setFilterData } =
-  housesSlice.actions
+export const {
+  setSelectedCity,
+  setSelectedType,
+  setSelectedShow,
+  setSelectedPageInc,
+  setSelectedPageDec,
+} = housesSlice.actions
 export default housesSlice.reducer

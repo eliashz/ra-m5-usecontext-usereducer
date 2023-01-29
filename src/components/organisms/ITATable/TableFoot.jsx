@@ -3,7 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { SelectGroup } from '../../molecules'
 import { showOptions } from '../../../constants'
-import { getAllHouses } from '../../../store/houses.slice'
+import {
+  getAllHouses,
+  setSelectedPageDec,
+  setSelectedPageInc,
+  setSelectedShow,
+} from '../../../store/houses.slice'
 import { colors, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
 import { TableCell } from './styles'
@@ -30,10 +35,8 @@ const StyledIcon = styled(Icon)`
 `
 
 function TableFoot() {
-  const [showValue, setShowValue] = useState(showOptions[0])
-  const [currentPage, setCurrentPage] = useState(1)
   const { houses } = useSelector((state) => state.houses)
-  const { allIds } = houses
+  const { allIds, selectedPage, selectedShow } = houses
 
   const dispatch = useDispatch()
 
@@ -49,18 +52,22 @@ function TableFoot() {
             <StyledIcon
               icon="arrow_back_ios"
               wght="800"
-              onClick={() => setCurrentPage(currentPage - 1)}
-              pointer={currentPage === 1 && 'none'}
+              onClick={() => dispatch(setSelectedPageDec())}
+              pointer={selectedPage === 1 && 'none'}
             />
             <Text as="b" fontSize=".7em">
-              Página {currentPage} de {Math.round(allIds.length / showValue)}
+              Página {selectedPage} de{' '}
+              {Math.round(allIds.length / selectedShow)}
             </Text>
 
             <StyledIcon
               icon="arrow_forward_ios"
               wght="800"
-              onClick={() => setCurrentPage(currentPage + 1)}
-              pointer={currentPage === Math.round(allIds.length / showValue) && 'none'}
+              onClick={() => dispatch(setSelectedPageInc())}
+              pointer={
+                selectedPage === Math.round(allIds.length / selectedShow) &&
+                'none'
+              }
             />
           </FlexBox>
         </StyledTableCell>
@@ -70,7 +77,7 @@ function TableFoot() {
             label="Mostrar"
             defaultValue="10"
             options={showOptions.map((opt) => ({ value: opt, text: opt }))}
-            onChange={(e) => setShowValue(e.target.value)}
+            onChange={(e) => dispatch(setSelectedShow(e.target.value))}
             weight="bold"
           />
         </StyledTableCell>
