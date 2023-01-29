@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { SelectGroup } from '../../molecules'
 import { showOptions } from '../../../constants'
@@ -30,9 +30,12 @@ const StyledIcon = styled(Icon)`
 `
 
 function TableFoot() {
-  const dispatch = useDispatch()
   const [showValue, setShowValue] = useState(showOptions[0])
   const [currentPage, setCurrentPage] = useState(1)
+  const { houses } = useSelector((state) => state.houses)
+  const { allIds } = houses
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getAllHouses())
@@ -50,14 +53,14 @@ function TableFoot() {
               pointer={currentPage === 1 && 'none'}
             />
             <Text as="b" fontSize=".7em">
-              Página {currentPage} de 50
+              Página {currentPage} de {Math.round(allIds.length / showValue)}
             </Text>
 
             <StyledIcon
               icon="arrow_forward_ios"
               wght="800"
               onClick={() => setCurrentPage(currentPage + 1)}
-              pointer={currentPage === 5 && 'none'}
+              pointer={currentPage === Math.round(allIds.length / showValue) && 'none'}
             />
           </FlexBox>
         </StyledTableCell>
