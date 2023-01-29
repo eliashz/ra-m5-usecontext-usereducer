@@ -39,7 +39,7 @@ function TableFoot() {
   }, [currentPage, showValue, dispatch])
 
   return (
-    <tfoot>
+    <div>
       <tr>
         <StyledTableCell border="none">
           <FlexBox direction="row" align="center">
@@ -70,7 +70,7 @@ function TableFoot() {
           />
         </StyledTableCell>
       </tr>
-    </tfoot>
+    </div>
   )
 }
 

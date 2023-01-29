@@ -16,8 +16,10 @@ function Houses() {
   const { byId, allIds, selectedCity, selectedType } = houses
   const dispatch = useDispatch()
 
+  console.log(hasData)
+
   useEffect(() => {
-    dispatch(getHouses({ currentPage, limit: 9 }))
+    dispatch(getHouses(currentPage))
   }, [currentPage, dispatch])
 
   return (

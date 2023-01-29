@@ -1,13 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { urls } from '../constants'
 
-const getUrl = (page, limit) => `${urls.houses}?_page=${page}&_limit=${limit}`
+const getUrl = (page) => {
+  return `${urls.houses}?_page=${page}&_limit=9`
+}
 
-export const getHouses = createAsyncThunk('houses/getHouses', async (info) => {
-  const res = await fetch(getUrl(info?.currentPage, info?.limit))
-  const data = await res.json()
-  return data
-})
+export const getHouses = createAsyncThunk(
+  'houses/getHouses',
+  async (currentPage) => {
+    const res = await fetch(getUrl(currentPage))
+    const data = await res.json()
+    return data
+  },
+)
 
 const initialState = {
   reqStatus: {
@@ -24,6 +29,7 @@ const initialState = {
     selectedType: null,
     types: [],
     cities: [],
+    filterData: [],
   },
 }
 

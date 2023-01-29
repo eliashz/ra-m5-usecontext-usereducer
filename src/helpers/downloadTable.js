@@ -1,3 +1,3 @@
-export const downloadTable = (data) => {
-  console.log(data)
+export const downloadTable = () => {
+  console.log('data')
 }
