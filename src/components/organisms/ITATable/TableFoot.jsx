@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { SelectGroup } from '../../molecules'
 import { showOptions } from '../../../constants'
-import { getHouses } from '../../../store/houses.slice'
+import { getAllHouses } from '../../../store/houses.slice'
 import { colors, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
 import { TableCell } from './styles'
@@ -35,8 +35,8 @@ function TableFoot() {
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
-    dispatch(getHouses(currentPage))
-  }, [currentPage, dispatch])
+    dispatch(getAllHouses())
+  }, [dispatch])
 
   return (
     <tfoot>

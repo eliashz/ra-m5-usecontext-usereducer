@@ -14,6 +14,15 @@ export const getHouses = createAsyncThunk(
   },
 )
 
+export const getAllHouses = createAsyncThunk(
+  'houses/getHouses',
+  async (currentPage) => {
+    const res = await fetch(urls.houses)
+    const data = await res.json()
+    return data
+  },
+)
+
 const initialState = {
   reqStatus: {
     status: 'initial',
