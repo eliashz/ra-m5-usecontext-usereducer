@@ -1,1 +1,1 @@
-export * from './downloadTable'
+export {default as downloadTable} from './downloadTable'
