@@ -43,7 +43,8 @@ function TableFoot() {
 
   useEffect(() => {
     dispatch(getAllHouses())
-  }, [dispatch])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function handleShowChange(e) {
     dispatch(setSelectedShow(e.target.value))

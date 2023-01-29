@@ -31,6 +31,7 @@ function Data() {
     (0 + Number(selectedPage) - 1) * Number(selectedShow),
     Number(selectedShow),
   )
+  
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
