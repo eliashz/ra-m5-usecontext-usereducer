@@ -15,9 +15,11 @@ function Table({ columns, data, showHeader = true, isLoading }) {
     dispatch({ type: Actions.SET_COLUMNS, payload: columns })
   }, [data, columns, dispatch])
 
+  // Si esta cargando que muestre una tabla vacia con 4 filas y 5 columnas, y en lugar de datos muestra Shimmers
+  //   Ahora mismo no tiene sentido elc ondicional sobre el TableFoot
   return (
     <>
-      {!isLoading && <Buttons columns={columns} data={data}/>}
+      {!isLoading && <Buttons columns={columns} data={data} />}
       <TableStyled>
         {showHeader && <TableHeader />}
         <TableBody />
