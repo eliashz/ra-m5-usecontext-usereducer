@@ -22,8 +22,8 @@ function Table({ columns, data, showHeader = true, isLoading }) {
       <TableStyled>
         {showHeader && <TableHeader />}
         <TableBody />
-        <TableFoot />
       </TableStyled>
+      <TableFoot />
     </>
   )
 }

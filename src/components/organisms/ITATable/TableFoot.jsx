@@ -4,13 +4,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { SelectGroup } from '../../molecules'
 import { showItems } from '../../../constants'
 import { getHouses } from '../../../store/houses.slice'
-import { colors, FlexBox } from '../../../styles'
+import { colors, Container, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
 import { TableCell } from './styles'
 import { TableContext } from './store/context'
 import { Actions } from './store/reducer'
 
 const StyledTableCell = styled(TableCell).attrs({ colSpan: 3 })``
+
+const StyledContainer = styled(Container)`
+  border-bottom: 1px solid ${colors.grey};
+  border-left: 1px solid ${colors.grey};
+  border-right: 1px solid ${colors.grey};
+  padding-top: 10px;
+  padding-bottom: 10px;
+`
 
 const StyledSelectGroup = styled(SelectGroup)`
   &:first-of-type {
@@ -56,40 +64,35 @@ function TableFoot() {
   }, [page, items, dispatch])
 
   return (
-    <tfoot>
-      <tr>
-        <StyledTableCell border="none">
-          <FlexBox direction="row" align="center">
-            <StyledIcon
-              icon="arrow_back_ios"
-              wght="800"
-              onClick={() => setPage(page - 1)}
-              pointer={page === 1 && 'none'}
-            />
-            <Text as="b" fontSize=".7em">
-              Página {page} de {Math.ceil(allIds.length / items)}
-            </Text>
-
-            <StyledIcon
-              icon="arrow_forward_ios"
-              wght="800"
-              onClick={() => setPage(page + 1)}
-              pointer={page === Math.ceil(allIds.length / items) && 'none'}
-            />
-          </FlexBox>
-        </StyledTableCell>
-        <StyledTableCell border="none" align="right">
-          <StyledSelectGroup
-            id="mostrar"
-            label="Mostrar"
-            defaultValue="10"
-            options={showItems.map((opt) => ({ value: opt, text: opt }))}
-            onChange={(e) => handleItemsChange(e)}
-            weight="bold"
-          />
-        </StyledTableCell>
-      </tr>
-    </tfoot>
+    <StyledContainer direction="row">
+      <FlexBox direction="row" align="center">
+        <StyledIcon
+          icon="arrow_back_ios"
+          wght="800"
+          onClick={() => setPage(page - 1)}
+          pointer={page === 1 && 'none'}
+        />
+        <Text as="b" fontSize=".7em">
+          Página {page} de {Math.ceil(allIds.length / items)}
+        </Text>
+        <StyledIcon
+          icon="arrow_forward_ios"
+          wght="800"
+          onClick={() => setPage(page + 1)}
+          pointer={page === Math.ceil(allIds.length / items) && 'none'}
+        />
+      </FlexBox>
+      <FlexBox align="flex-end">
+        <StyledSelectGroup
+          id="mostrar"
+          label="Mostrar"
+          defaultValue="10"
+          options={showItems.map((opt) => ({ value: opt, text: opt }))}
+          onChange={(e) => handleItemsChange(e)}
+          weight="bold"
+        />
+      </FlexBox>
+    </StyledContainer>
   )
 }
 
