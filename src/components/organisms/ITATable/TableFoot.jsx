@@ -42,9 +42,8 @@ function TableFoot() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getHouses({ currentPage: selectedPage, limit: selectedShow }))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPage, selectedShow])
+    dispatch(getHouses())
+  }, [dispatch, selectedPage, selectedShow])
 
   function handleShowChange(e) {
     dispatch(setSelectedShow(e.target.value))

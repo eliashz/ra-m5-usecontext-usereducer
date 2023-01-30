@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { showOptions, urls } from '../constants'
 
-const getUrl = (page, limit) => {
-  return `${urls.houses}?_page=${page}&_limit=${limit}`
+const getUrl = (page = '', limit = '') => {
+  return `${urls.houses}${page && `?_page=${page}`}${
+    limit && `&_limit=${limit}`
+  }`
 }
 
 export const getHouses = createAsyncThunk(
