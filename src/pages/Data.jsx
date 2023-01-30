@@ -12,6 +12,7 @@ function Data() {
   //const { isLoading } = useSelector((state) => state.houses.reqStatus)
   const isLoading = false
 
+  //   Este loadign es falso
   const loading = [
     {
       id: 1,
@@ -27,6 +28,7 @@ function Data() {
     },
   ]
 
+  //   Esto no tiene sentido, (selectedPage, ...)
   const data = Object.values(byId).splice(
     (0 + selectedPage - 1) * selectedShow,
     selectedShow,
@@ -36,8 +38,8 @@ function Data() {
     <Body>
       <Container style={{ marginTop: '2rem' }}>
         <ITATable
-          columns={isLoading ? loading : columns}
-          data={!isLoading && data}
+          columns={isLoading ? loading : columns} // Aquí tienes que pasar columns independientemente del loading
+          data={!isLoading && data} // Aquí tienes que pasar data independientemente del loading
           isLoading={isLoading}
         />
       </Container>

@@ -14,6 +14,7 @@ export const getHouses = createAsyncThunk(
   },
 )
 
+// Esta duplicado y no gestiona el error adecuadamente
 export const getAllHouses = createAsyncThunk(
   'houses/getHouses',
   async (currentPage) => {
@@ -56,12 +57,15 @@ const housesSlice = createSlice({
     setSelectedShow(state, action) {
       state.houses.selectedShow = action.payload
     },
+    // La paginación se tiene que gestionar en el reducer del ITATable
     setSelectedPageInc(state) {
       state.houses.selectedPage += 1
     },
+    // La paginación se tiene que gestionar en el reducer del ITATable
     setSelectedPageDec(state) {
       state.houses.selectedPage -= 1
     },
+    // La paginación se tiene que gestionar en el reducer del ITATable
     setSelectedPageInitial(state) {
       state.houses.selectedPage = 1
     },
