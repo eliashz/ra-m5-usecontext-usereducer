@@ -6,22 +6,14 @@ import { columns } from '../constants'
 import { Container } from '../styles'
 
 function Data() {
-  const { byId, selectedPage, selectedShow } = useSelector(
-    (state) => state.houses.houses,
-  )
-  //const { isLoading } = useSelector((state) => state.houses.reqStatus)
-  const isLoading = false
-  
-  
-  const data = Object.values(byId).splice(
-    (0 + selectedPage - 1) * selectedShow,
-    selectedShow,
-  )
+  const { byId } = useSelector((state) => state.houses.houses)
+
+  const { isLoading } = useSelector((state) => state.houses.reqStatus)
 
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
-        <ITATable columns={columns} data={data} isLoading={isLoading} />
+        <ITATable columns={columns} data={byId} isLoading={isLoading} />
       </Container>
     </Body>
   )

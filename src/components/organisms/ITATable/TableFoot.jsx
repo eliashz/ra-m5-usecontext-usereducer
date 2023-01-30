@@ -43,7 +43,7 @@ function TableFoot() {
   const { allIds } = houses
   const [page, setPage] = useState(1)
   const [items, setItems] = useState(showItems[0])
-
+  console.log('foot', page, items)
   const dispatchRedux = useDispatch()
   const { dispatch } = useContext(TableContext)
 
@@ -52,13 +52,16 @@ function TableFoot() {
   }, [dispatchRedux])
 
   function handleShowChange(e) {
-    dispatch({ type: Actions.SET_PAGE, payload: 1 })
-    dispatch({ type: Actions.SET_ITEMS, payload: e.target.value })
+    setPage(1)
+    setItems(e.target.value)
+    dispatch({ type: Actions.SET_PAGE, payload: page })
+    dispatch({ type: Actions.SET_ITEMS, payload: items })
   }
 
   useEffect(() => {
+    dispatch({ type: Actions.SET_ITEMS, payload: page })
     dispatch({ type: Actions.SET_ITEMS, payload: items })
-  }, [items, dispatch])
+  }, [page, items, dispatch])
 
   return (
     <tfoot>

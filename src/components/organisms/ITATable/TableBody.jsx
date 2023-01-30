@@ -4,10 +4,18 @@ import { TableCell } from './styles'
 
 function TableBody() {
   const { state } = useContext(TableContext)
-  const { data, columns } = state
+  const { data, columns, page, items } = state
+  console.log((0 + page - 1) * Number(items),
+  Number(items))
+
+  let data2 = Object.values(data).slice(
+    (0 + page - 1) * Number(items),
+    Number(items),
+  )
+  console.log('DATA', data2)
   return (
     <tbody>
-      {Object.values(data).map((d) => (
+      {Object.values(data2).map((d) => (
         <tr key={d.id}>
           {columns
             .filter((col) => !col.isHidden)

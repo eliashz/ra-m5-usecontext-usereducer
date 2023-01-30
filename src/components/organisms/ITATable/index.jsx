@@ -15,6 +15,8 @@ function Table({ columns, data, showHeader = true, isLoading }) {
     dispatch({ type: Actions.SET_COLUMNS, payload: columns })
   }, [data, columns, dispatch])
 
+  console.log(columns);
+
   return (
     <>
       <Buttons columns={columns} data={data} />

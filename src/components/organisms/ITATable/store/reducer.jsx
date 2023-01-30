@@ -1,8 +1,11 @@
 import { createNextState } from '@reduxjs/toolkit'
+import { showItems } from '../../../../constants'
 
 export const initialState = {
   data: [],
   columns: [],
+  page: 1,
+  items: showItems[0],
 }
 
 export const Actions = {
