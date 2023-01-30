@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { SelectGroup } from '../../molecules'
-import { showOptions } from '../../../constants'
+import { showItems } from '../../../constants'
 import {
   getHouses,
   setSelectedPageDec,
@@ -13,6 +13,9 @@ import {
 import { colors, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
 import { TableCell } from './styles'
+import { TableContext } from './store/context'
+import { useState } from 'react'
+import { Actions } from './store/reducer'
 
 const StyledTableCell = styled(TableCell).attrs({ colSpan: 3 })``
 
@@ -37,23 +40,25 @@ const StyledIcon = styled(Icon)`
 
 function TableFoot() {
   const { houses } = useSelector((state) => state.houses)
-  const { allIds, selectedPage, selectedShow } = houses
+  const { allIds } = houses
+  const [page, setPage] = useState(1)
+  const [items, setItems] = useState(showItems[0])
 
-  const dispatch = useDispatch()
+  const dispatchRedux = useDispatch()
+  const { dispatch } = useContext(TableContext)
 
   useEffect(() => {
-    dispatch(getHouses({}))
-  }, [dispatch])
+    dispatchRedux(getHouses({}))
+  }, [dispatchRedux])
 
   function handleShowChange(e) {
-    dispatch(setSelectedShow(e.target.value))
-    dispatch(setSelectedPageInitial())
+    dispatch({ type: Actions.SET_PAGE, payload: 1 })
+    dispatch({ type: Actions.SET_ITEMS, payload: e.target.value })
   }
 
   useEffect(() => {
-    dispatch({ type: Actions.SET_DATA, payload: data })
-    dispatch({ type: Actions.SET_COLUMNS, payload: columns })
-  }, [data, columns, dispatch])
+    dispatch({ type: Actions.SET_ITEMS, payload: items })
+  }, [items, dispatch])
 
   return (
     <tfoot>
@@ -63,21 +68,18 @@ function TableFoot() {
             <StyledIcon
               icon="arrow_back_ios"
               wght="800"
-              onClick={() => dispatch(setSelectedPageDec())}
-              pointer={selectedPage === 1 && 'none'}
+              onClick={() => setPage(page - 1)}
+              pointer={page === 1 && 'none'}
             />
             <Text as="b" fontSize=".7em">
-              Página {selectedPage} de {Math.ceil(allIds.length / selectedShow)}
+              Página {page} de {Math.ceil(allIds.length / items)}
             </Text>
 
             <StyledIcon
               icon="arrow_forward_ios"
               wght="800"
-              onClick={() => dispatch(setSelectedPageInc())}
-              pointer={
-                selectedPage === Math.ceil(allIds.length / selectedShow) &&
-                'none'
-              }
+              onClick={() => setPage(page + 1)}
+              pointer={page === Math.ceil(allIds.length / items) && 'none'}
             />
           </FlexBox>
         </StyledTableCell>
@@ -86,7 +88,7 @@ function TableFoot() {
             id="mostrar"
             label="Mostrar"
             defaultValue="10"
-            options={showOptions.map((opt) => ({ value: opt, text: opt }))}
+            options={showItems.map((opt) => ({ value: opt, text: opt }))}
             onChange={(e) => handleShowChange(e)}
             weight="bold"
           />

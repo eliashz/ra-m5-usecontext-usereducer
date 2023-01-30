@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { showOptions, urls } from '../constants'
+import { showItems, urls } from '../constants'
 
 const getUrl = (page = '', limit = '') => {
   return `${urls.houses}${page && `?_page=${page}`}${
@@ -31,7 +31,7 @@ const initialState = {
     selectedType: null,
     types: [],
     cities: [],
-    selectedShow: showOptions[0],
+    selectedShow: showItems[0],
     selectedPage: 1,
   },
 }
