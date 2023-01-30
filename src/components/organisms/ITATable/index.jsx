@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useEffect, useContext } from 'react'
 import { Buttons } from '../../molecules'
 import TableProvider, { TableContext } from './store/context'
@@ -14,8 +15,6 @@ function Table({ columns, data, showHeader = true, isLoading }) {
     dispatch({ type: Actions.SET_DATA, payload: data })
     dispatch({ type: Actions.SET_COLUMNS, payload: columns })
   }, [data, columns, dispatch])
-
-  console.log(columns);
 
   return (
     <>
@@ -35,6 +34,30 @@ function ITATable(props) {
       <Table {...props} />
     </TableProvider>
   )
+}
+
+Table.propTypes = {
+  data: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      district: PropTypes.string.isRequired,
+      createdAt: PropTypes.string,
+      updatedAt: PropTypes.string,
+    }),
+  ),
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ),
+  showHeader: PropTypes.bool,
+  isLoading: PropTypes.bool,
 }
 
 export default ITATable

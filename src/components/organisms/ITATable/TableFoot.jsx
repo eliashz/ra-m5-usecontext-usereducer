@@ -1,20 +1,13 @@
-import React, { useContext, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import React, { useContext, useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { SelectGroup } from '../../molecules'
 import { showItems } from '../../../constants'
-import {
-  getHouses,
-  setSelectedPageDec,
-  setSelectedPageInc,
-  setSelectedPageInitial,
-  setSelectedShow,
-} from '../../../store/houses.slice'
+import { getHouses } from '../../../store/houses.slice'
 import { colors, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
 import { TableCell } from './styles'
 import { TableContext } from './store/context'
-import { useState } from 'react'
 import { Actions } from './store/reducer'
 
 const StyledTableCell = styled(TableCell).attrs({ colSpan: 3 })``
