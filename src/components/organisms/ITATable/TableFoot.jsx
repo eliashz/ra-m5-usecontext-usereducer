@@ -43,7 +43,7 @@ function TableFoot() {
     dispatchRedux(getHouses({}))
   }, [dispatchRedux])
 
-  function handleShowChange(e) {
+  function handleItemsChange(e) {
     setPage(1)
     setItems(e.target.value)
     dispatch({ type: Actions.SET_PAGE, payload: page })
@@ -84,7 +84,7 @@ function TableFoot() {
             label="Mostrar"
             defaultValue="10"
             options={showItems.map((opt) => ({ value: opt, text: opt }))}
-            onChange={(e) => handleShowChange(e)}
+            onChange={(e) => handleItemsChange(e)}
             weight="bold"
           />
         </StyledTableCell>
