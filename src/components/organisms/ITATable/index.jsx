@@ -8,7 +8,14 @@ import TableBody from './TableBody'
 import TableFoot from './TableFoot'
 import TableHeader from './TableHeader'
 
-function Table({ columns, data, showHeader = true, isLoading }) {
+function Table({
+  columns,
+  data,
+  showHeader = true,
+  isLoading,
+  isSuccess,
+  isError,
+}) {
   const { dispatch } = useContext(TableContext)
 
   useEffect(() => {
@@ -18,12 +25,18 @@ function Table({ columns, data, showHeader = true, isLoading }) {
 
   return (
     <>
-      <Buttons columns={columns} data={data} />
-      <TableStyled>
-        {showHeader && <TableHeader />}
-        <TableBody />
-      </TableStyled>
-      <TableFoot />
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error</div>}
+      {isSuccess && (
+        <>
+          <Buttons columns={columns} data={data} />
+          <TableStyled>
+            {showHeader && <TableHeader />}
+            <TableBody />
+          </TableStyled>
+          <TableFoot />
+        </>
+      )}
     </>
   )
 }
@@ -58,6 +71,8 @@ Table.propTypes = {
   ),
   showHeader: PropTypes.bool,
   isLoading: PropTypes.bool,
+  isSuccess: PropTypes.bool,
+  isError: PropTypes.bool,
 }
 
 export default ITATable

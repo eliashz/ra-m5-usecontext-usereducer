@@ -8,12 +8,21 @@ import { Container } from '../styles'
 function Data() {
   const { byId } = useSelector((state) => state.houses.houses)
 
-  const { isLoading } = useSelector((state) => state.houses.reqStatus)
+  const { isLoading, isSuccess, isError } = useSelector(
+    (state) => state.houses.reqStatus,
+  )
 
+  console.log('l', isLoading, 's', isSuccess, 'e', isError)
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
-        <ITATable columns={columns} data={byId} isLoading={isLoading} />
+        <ITATable
+          columns={columns}
+          data={byId}
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+          isError={isError}
+        />
       </Container>
     </Body>
   )

@@ -46,7 +46,8 @@ function TableFoot() {
 
   useEffect(() => {
     dispatchRedux(getHouses({}))
-  }, [dispatchRedux])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function handleItemsChange(e) {
     setPage(1)
