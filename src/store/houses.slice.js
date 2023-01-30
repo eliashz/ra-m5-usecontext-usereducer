@@ -31,8 +31,6 @@ const initialState = {
     selectedType: null,
     types: [],
     cities: [],
-    selectedShow: showItems[0],
-    selectedPage: 1,
   },
 }
 
@@ -45,18 +43,6 @@ const housesSlice = createSlice({
     },
     setSelectedType(state, action) {
       state.houses.selectedType = action.payload
-    },
-    setSelectedShow(state, action) {
-      state.houses.selectedShow = action.payload
-    },
-    setSelectedPageInc(state) {
-      state.houses.selectedPage += 1
-    },
-    setSelectedPageDec(state) {
-      state.houses.selectedPage -= 1
-    },
-    setSelectedPageInitial(state) {
-      state.houses.selectedPage = 1
     },
   },
   extraReducers: (builder) => {
@@ -96,12 +82,5 @@ const housesSlice = createSlice({
   },
 })
 
-export const {
-  setSelectedCity,
-  setSelectedType,
-  setSelectedShow,
-  setSelectedPageInc,
-  setSelectedPageDec,
-  setSelectedPageInitial,
-} = housesSlice.actions
+export const { setSelectedCity, setSelectedType } = housesSlice.actions
 export default housesSlice.reducer

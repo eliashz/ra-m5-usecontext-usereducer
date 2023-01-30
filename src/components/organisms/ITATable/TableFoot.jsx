@@ -6,11 +6,8 @@ import { showItems } from '../../../constants'
 import { getHouses } from '../../../store/houses.slice'
 import { colors, Container, FlexBox } from '../../../styles'
 import { Icon, Text } from '../../atoms'
-import { TableCell } from './styles'
 import { TableContext } from './store/context'
 import { Actions } from './store/reducer'
-
-const StyledTableCell = styled(TableCell).attrs({ colSpan: 3 })``
 
 const StyledContainer = styled(Container)`
   border-bottom: 1px solid ${colors.grey};

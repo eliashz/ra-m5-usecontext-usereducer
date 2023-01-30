@@ -6,10 +6,17 @@ export default (columns, data) => {
   const doc = new jsPDF()
 
   autoTable(doc, {
-    head: [columns.map(col => col.label)],
-    body: [...data.map(col => [col.title, col.price, col.type, col.city, col.district])],
+    head: [columns.map((col) => col.label)],
+    body: [
+      ...Object.values(data).map((col) => [
+        col.title,
+        col.price,
+        col.type,
+        col.city,
+        col.district,
+      ]),
+    ],
   })
-  
+
   doc.save('casasExport.pdf')
-  }
-  
+}
