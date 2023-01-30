@@ -39,11 +39,10 @@ const StyledIcon = styled(Icon)`
 `
 
 function TableFoot() {
-  const { houses } = useSelector((state) => state.houses)
-  const { allIds } = houses
   const [page, setPage] = useState(1)
   const [items, setItems] = useState(showItems[0])
-  console.log('foot', page, items)
+  const { houses } = useSelector((state) => state.houses)
+  const { allIds } = houses
   const dispatchRedux = useDispatch()
   const { dispatch } = useContext(TableContext)
 
@@ -59,7 +58,7 @@ function TableFoot() {
   }
 
   useEffect(() => {
-    dispatch({ type: Actions.SET_ITEMS, payload: page })
+    dispatch({ type: Actions.SET_PAGE, payload: page })
     dispatch({ type: Actions.SET_ITEMS, payload: items })
   }, [page, items, dispatch])
 
