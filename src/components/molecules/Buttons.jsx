@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { colors, FlexBox } from '../../styles'
 import { Button, Icon } from '../atoms'
 import { downloadTable } from '../organisms/helpers'
+import { TableContext } from '../organisms/ITATable/store/context'
 
 const StyledButton = styled(Button)`
   font-size: 0.7em;
@@ -17,7 +18,10 @@ const StyledIcon = styled(Icon)`
   padding-right: 2px;
 `
 
-function Buttons({ columns, data }) {
+function Buttons() {
+  const { state } = useContext(TableContext)
+  const { data, columns } = state
+  
   return (
     <FlexBox direction="row" justify="flex-end">
       <StyledButton
@@ -46,28 +50,6 @@ function Buttons({ columns, data }) {
       </StyledButton>
     </FlexBox>
   )
-}
-
-Buttons.propTypes = {
-  data: PropTypes.objectOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      district: PropTypes.string.isRequired,
-      createdAt: PropTypes.string,
-      updatedAt: PropTypes.string,
-    }),
-  ),
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    }),
-  ),
 }
 
 export default Buttons
