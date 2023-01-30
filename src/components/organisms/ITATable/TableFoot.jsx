@@ -42,8 +42,8 @@ function TableFoot() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getHouses())
-  }, [dispatch, selectedPage, selectedShow])
+    dispatch(getHouses({}))
+  }, [])
 
   function handleShowChange(e) {
     dispatch(setSelectedShow(e.target.value))

@@ -35,11 +35,7 @@ function Data() {
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
-        <ITATable
-          columns={isLoading ? loading : columns}
-          data={!isLoading && data}
-          isLoading={isLoading}
-        />
+        <ITATable columns={columns} data={data} isLoading={isLoading} />
       </Container>
     </Body>
   )

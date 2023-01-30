@@ -17,11 +17,11 @@ function Table({ columns, data, showHeader = true, isLoading }) {
 
   return (
     <>
-      {!isLoading && <Buttons columns={columns} data={data}/>}
+      <Buttons columns={columns} data={data} />
       <TableStyled>
         {showHeader && <TableHeader />}
         <TableBody />
-        {!isLoading && <TableFoot />}
+        <TableFoot />
       </TableStyled>
     </>
   )
