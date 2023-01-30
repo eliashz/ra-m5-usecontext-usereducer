@@ -13,7 +13,8 @@ function TableBody() {
             .filter((col) => !col.isHidden)
             .map((col) => (
               <TableCell key={`${d.id}-${col.id}`}>
-                {col.cell ? col.cell(d) : d[col.id]}{col.id === 'price'  && '€'}
+                {col.cell ? col.cell(d) : d[col.id]}
+                {col.id === 'price' && '€'}
               </TableCell>
             ))}
         </tr>

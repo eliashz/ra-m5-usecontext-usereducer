@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Body } from '../components/layout'
 import { ITATable } from '../components/organisms'
-import { columns, img } from '../constants'
+import { columns } from '../constants'
 import { Container } from '../styles'
 
 function Data() {
@@ -11,7 +11,8 @@ function Data() {
   )
   //const { isLoading } = useSelector((state) => state.houses.reqStatus)
   const isLoading = false
-
+  
+  
   const data = Object.values(byId).splice(
     (0 + selectedPage - 1) * selectedShow,
     selectedShow,

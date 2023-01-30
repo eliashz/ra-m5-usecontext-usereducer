@@ -43,12 +43,17 @@ function TableFoot() {
 
   useEffect(() => {
     dispatch(getHouses({}))
-  }, [])
+  }, [dispatch])
 
   function handleShowChange(e) {
     dispatch(setSelectedShow(e.target.value))
     dispatch(setSelectedPageInitial())
   }
+
+  useEffect(() => {
+    dispatch({ type: Actions.SET_DATA, payload: data })
+    dispatch({ type: Actions.SET_COLUMNS, payload: columns })
+  }, [data, columns, dispatch])
 
   return (
     <tfoot>
