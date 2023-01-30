@@ -25,8 +25,8 @@ function Table({
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
+      {isLoading && <div>Cargando...</div>}
       {isSuccess && (
         <>
           <Buttons columns={columns} data={data} />
@@ -34,9 +34,9 @@ function Table({
             {showHeader && <TableHeader />}
             <TableBody />
           </TableStyled>
-          <TableFoot />
         </>
       )}
+      <TableFoot />
     </>
   )
 }

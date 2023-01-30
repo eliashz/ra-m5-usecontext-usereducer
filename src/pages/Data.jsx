@@ -12,7 +12,6 @@ function Data() {
     (state) => state.houses.reqStatus,
   )
 
-  console.log('l', isLoading, 's', isSuccess, 'e', isError)
   return (
     <Body>
       <Container style={{ marginTop: '2rem' }}>
