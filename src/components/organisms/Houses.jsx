@@ -17,7 +17,7 @@ function Houses() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getHouses(currentPage))
+    dispatch(getHouses({ currentPage, limit: 9 }))
   }, [currentPage, dispatch])
 
   return (

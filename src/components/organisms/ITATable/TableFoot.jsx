@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { SelectGroup } from '../../molecules'
 import { showOptions } from '../../../constants'
 import {
-  getAllHouses,
+  getHouses,
   setSelectedPageDec,
   setSelectedPageInc,
   setSelectedPageInitial,
@@ -42,9 +42,9 @@ function TableFoot() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getAllHouses())
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    dispatch(getHouses({ currentPage: selectedPage, limit: selectedShow }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPage, selectedShow])
 
   function handleShowChange(e) {
     dispatch(setSelectedShow(e.target.value))
