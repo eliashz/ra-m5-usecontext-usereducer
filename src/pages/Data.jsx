@@ -12,21 +12,6 @@ function Data() {
   //const { isLoading } = useSelector((state) => state.houses.reqStatus)
   const isLoading = false
 
-  const loading = [
-    {
-      id: 1,
-      label: <img src={img.loading} alt="loading" height="30px" />,
-    },
-    {
-      id: 2,
-      label: <img src={img.loading} alt="loading" height="30px" />,
-    },
-    {
-      id: 3,
-      label: <img src={img.loading} alt="loading" height="30px" />,
-    },
-  ]
-
   const data = Object.values(byId).splice(
     (0 + selectedPage - 1) * selectedShow,
     selectedShow,

@@ -8,6 +8,8 @@ export const initialState = {
 export const Actions = {
   SET_DATA: 'SET_DATA',
   SET_COLUMNS: 'SET_COLUMNS',
+  SET_PAGE: 'SET_PAGE',
+  SET_ITEMS: 'SET_ITEMS',
 }
 
 // eslint-disable-next-line default-param-last
@@ -21,6 +23,15 @@ export const tableReducer = (state = initialState, action) => {
     case Actions.SET_COLUMNS:
       return createNextState(state, (draft) => {
         draft.columns = action.payload
+      })
+
+    case Actions.SET_PAGE:
+      return createNextState(state, (draft) => {
+        draft.page = action.payload
+      })
+    case Actions.SET_ITEMS:
+      return createNextState(state, (draft) => {
+        draft.items = action.payload
       })
 
     default:
