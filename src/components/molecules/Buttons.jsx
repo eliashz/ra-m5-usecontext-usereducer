@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import PropTypes from 'prop-types'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { colors, FlexBox } from '../../styles'
 import { Button, Icon } from '../atoms'
 import { downloadTable } from '../organisms/helpers'
 import { TableContext } from '../organisms/ITATable/store/context'
+import { Actions } from '../organisms/ITATable/store/reducer'
 
 const StyledButton = styled(Button)`
   font-size: 0.7em;
@@ -19,15 +19,22 @@ const StyledIcon = styled(Icon)`
 `
 
 function Buttons() {
-  const { state } = useContext(TableContext)
+  const { state, dispatch } = useContext(TableContext)
   const { data, columns } = state
-  
+
+  function sortBy(param) {
+    const sortedData = Object.values(data).sort((a, b) =>
+      a[param] > b[param] ? 1 : -1,
+    )
+    dispatch({ type: Actions.SET_DATA, payload: sortedData })
+  }
+
   return (
     <FlexBox direction="row" justify="flex-end">
       <StyledButton
         background={colors.purple}
         boxShadow="none"
-        cursor="initial"
+        onClick={() => sortBy('type')}
       >
         Viviendas
       </StyledButton>
@@ -36,7 +43,7 @@ function Buttons() {
         color={colors.font.base}
         border={`1px solid ${colors.grey}`}
         boxShadow="none"
-        cursor="initial"
+        onClick={() => sortBy('district')}
       >
         Por barrio
       </StyledButton>
