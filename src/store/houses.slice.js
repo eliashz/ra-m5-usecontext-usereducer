@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { showItems, urls } from '../constants'
+import { urls } from '../constants'
 
 const getUrl = (page = '', limit = '') => {
   return `${urls.houses}${page && `?_page=${page}`}${
